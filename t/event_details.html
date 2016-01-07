@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Fossasia Event Manager</title>
+    </head>
+    {% block body_block %}
+    <div>
+    <body>
+        {% if event %}
+            <h1>{{ event_title }} - Planified for {{ event.time }} <h1>
+            <h2>{{ event.location }} - Participants <strong id="participate_count"> {{ event.participants }} </strong> {% if user.is_authenticated %}
+            <button class="btn btn-primary" id="participants" data-eventid="{{event.id}}"> Participate </button>
+{% endif %}
+</h2>
+            <h4>{{ event.details }}</h4>
+        {% if user.is_authenticated %}
+            <div id="ticket">
+            <object data="/static/generated_event.pdf" type="application/pdf" width="80%" height="400px">
+        <p>It appears you don't have a PDF plugin for this browser.
+        No biggie... you can <a href="/static/generated_event.pdf">click here to
+        download the PDF file.</a></p>
+        </object>
+         </div>
+
+        {% endif %}
+        {% else %}
+            The specified event {{ event_title }} does not exist!
+        {% endif %}
+    </body>
+    </div>
+   {% endblock %}
+</html>

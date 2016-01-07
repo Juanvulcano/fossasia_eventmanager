@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block body_block %}
+<html>
+	<head>
+		<title> Create a new event !</title>
+        </head>
+
+        <body>
+		<h1> Organize a new event </h1>
+	      <form id="addeventform" class="form-horizontal" form role="form" method="post" action="/events/test/">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="title">Title:</label>
+        	    <div class="col-sm-5">
+                    <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
+                    </div>
+                </div>
+                <div class="form-group">
+		    <label class="control-label col-sm-1" for="details">Details:</label>
+                    <div class="col-sm-5">
+                    <textarea id="details" name="details" class="form-control" rows="10" cols="70"></textarea> 
+                    </div>
+                </div>
+                <div class="form-group">
+		    <label class="control-label col-sm-1" for"location">Location:</label>
+                    <div class="col-sm-5">
+                    <input type="text" name="location" class="form-control" id="location" placeholder="Your location">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-1" for="date">Date:</label>
+                    <div class="col-sm-3">
+                    <input type="date" id="time" name="time" class="form-control" value="{{placement.date|date:"Y-m-d" }}">
+                    </div> 
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </div>
+              </form>	
+	</body>
+</html>
+{% endblock %}

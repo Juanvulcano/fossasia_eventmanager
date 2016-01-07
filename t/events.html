@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>Events available</title>
+    </head>
+   
+    {% block body_block %}
+
+    <body>
+             {% if events %}
+            <ul>
+                {% for event in events %}
+                <!-- Following line changed to add an HTML hyperlink -->
+                <li><a href="/events/event/{{ event.slug }}">{{ event.title }}</a></li>
+                {% endfor %}
+            </ul>
+       {% else %}
+            <strong>There are no events present.</strong>
+       {% endif %}
+
+
+    </body>
+    {% endblock %}
+
+</html>
+
+
